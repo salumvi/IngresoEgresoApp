@@ -41,8 +41,12 @@
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" [disabled]="registroForm.invalid" class="btn btn-primary submit-btn btn-block">
+                            <button *ngIf="!isloading" type="submit" [disabled]="registroForm.invalid" class="btn btn-primary submit-btn btn-block">
                                 Crear cuenta
+                            </button>
+                            <button *ngIf="isloading" type="button" [disabled]="true" class="btn btn-primary submit-btn btn-block">
+                                <i class="fa fa-spin fa-sync"></i>
+                                Espere...
                             </button>
                         </div>
 
