@@ -3,11 +3,11 @@ import { setUser, unSetUser } from './auth.actions';
 import { Usuario } from '../modelos/usuario.model';
 
 export interface State {
-    usuario: Usuario; 
+    user: Usuario; 
 }
 
 export const initialState: State = {
-   usuario: null,
+    user: null,
 }
 
 const _authReducer = createReducer(initialState,

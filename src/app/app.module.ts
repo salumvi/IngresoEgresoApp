@@ -12,6 +12,9 @@ import { StoreModule } from '@ngrx/store';
 import { appReducers } from './app.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
+// Chart:
+import { ChartsModule } from 'ng2-charts';
+
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -24,6 +27,11 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { OrdenIngresoEgresoPipe } from './pipes/orden-ingreso-egreso.pipe';
+import { SumaIngresosEgresosPipe } from './pipes/suma-ingresos-egresos.pipe';
 
 @NgModule({
   declarations: [
@@ -37,6 +45,8 @@ import { AppRoutingModule } from './app-routing.module';
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
+    OrdenIngresoEgresoPipe,
+    SumaIngresosEgresosPipe,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +60,10 @@ import { AppRoutingModule } from './app-routing.module';
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatSortModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

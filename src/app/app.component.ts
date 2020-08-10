@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { AuthService } from './services/auth.service';
 
 @Component({
@@ -6,12 +6,15 @@ import { AuthService } from './services/auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent  {
  
 
-  constructor(private as: AuthService) {
+  constructor(
+    private as: AuthService,
+   ) {
+
     this.as.initAutListener();
+
   }
 
-
-}
+ }

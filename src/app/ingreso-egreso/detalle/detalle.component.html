@@ -15,17 +15,79 @@
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td>Descripción</td>
-                            <td>Monto</td>
-                            <td>Tipo</td>
-                            <td>acciones</td>
+                        <tr *ngFor="let item of ingresoEgreso | ordenIngresoEgreso">
+                            <td>{{ item.descripcion }}</td>
+                            <td>{{ item.monto | currency }}</td>
+                            <td>
+                                <span [ngClass]="{
+                    'badge badge-success': item.tipo === 'ingreso',
+                    'badge badge-danger': item.tipo === 'egreso'
+                  }">
+                  {{ item.tipo }}
+                </span>
+                            </td>
+                            <td>
+                                <button (click)="borrar(item.uid)" class="btn btn-danger">
+                  <i class="fa fa-trash"></i>
+                  Borrar
+                </button>
+                            </td>
                         </tr>
                     </tbody>
-
                 </table>
+            </div>
+        </div>
+    </div>
+</div>
 
+<br />
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Detalle de ingreso egreso</h4>
 
+                <table mat-table [dataSource]="ingresoEgresoSource" matSort class="mat-elevation-z8">
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="descripcion">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Descripcion.
+                        </th>
+                        <td mat-cell *matCellDef="let element">
+                            {{ element.descripcion }}
+                        </td>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="monto">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Monto</th>
+                        <td mat-cell *matCellDef="let element">{{ element.monto }}</td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="tipo">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</th>
+                        <td mat-cell *matCellDef="let element">
+                            <span [ngClass]="{
+                                'badge badge-success': element.tipo === 'ingreso',
+                                'badge badge-danger': element.tipo === 'egreso'}">
+                              {{ element.tipo }}
+                            </span>
+                        </td>
+                    </ng-container>
+
+                    <!-- Weight acction -->
+                    <ng-container matColumnDef="accion">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Borrar</th>
+                        <td mat-cell *matCellDef="let element"> <button (click)="borrar(element.uid)" class="btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                            Borrar
+                          </button></td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="nombreColumnas"></tr>
+                    <tr mat-row *matRowDef="let row; columns: nombreColumnas"></tr>
+                </table>
             </div>
         </div>
     </div>
