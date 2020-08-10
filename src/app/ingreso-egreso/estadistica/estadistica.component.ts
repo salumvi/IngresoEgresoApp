@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AppState } from 'src/app/app.reducer';
+import { AppState, AppStateWithInEgre } from 'src/app/app.reducer';
 import { Store } from '@ngrx/store';
 import { IngresoEgreso } from '../../modelos/ingreso-egreso';
 import { Subscription } from 'rxjs';
@@ -23,7 +23,7 @@ export class EstadisticaComponent implements OnInit, OnDestroy {
   doughnutChartData: MultiDataSet = [];
   doughnutChartType: ChartType = 'doughnut';
   constructor(
-    private stote: Store<AppState>
+    private stote: Store<AppStateWithInEgre>
   ) { }
   ngOnDestroy(): void {
     this.ingresosEgresosSub.unsubscribe();

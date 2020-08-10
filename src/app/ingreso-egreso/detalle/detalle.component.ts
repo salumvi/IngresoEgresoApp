@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { AppState } from 'src/app/app.reducer';
+import { AppState, AppStateWithInEgre } from 'src/app/app.reducer';
 import { Store } from '@ngrx/store';
 import { IngresoEgreso } from '../../modelos/ingreso-egreso';
 import { Subscription } from 'rxjs';
@@ -23,7 +23,7 @@ export class DetalleComponent implements OnInit, OnDestroy {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   constructor(
-    private store: Store<AppState>,
+    private store: Store<AppStateWithInEgre>,
     private ies: IngresoEgresoService) { }
 
 
